@@ -42,4 +42,4 @@ Edit the below `docker run` command to your needs and run:
 
 
 ## Disclaimer
-This repository has no affiliation with the official repository [rob121/broadlinkgo](https://github.com/rob121/broadlinkgo).
+This repository has no affiliation with the official repository [rob121/broadlinkgo](https://github.com/rob121/broadlinkgo). I am not responsible for anything that can possibly go wrong because of this software. Please, always back-up your own configuration files before making changes.
