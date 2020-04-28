@@ -15,11 +15,31 @@ You can specify where you want to store your configuration files in the volumes 
 _The `:ro` in the end of the specified volume in the file makes the share read-only to the container. This is perfect when you are finished adding your devices and commands as it prevents you from accedentaly removing anything through the Web UI. Start without `:ro`, when ready recreate with `:ro`._
 
 ### Port mapping
-Under the `ports` section I specified an IP-address also `127.0.0.1:42011:42011/tcp`, you should replace that to your network IP if you want tools like Portainer.io to point you to the right ports without needing to change your Docker deamon configuration. But you can also change it simply to `42011:42011/tcp` where the first port is your local port and can be anything, the part after `:` should stay unchanged.
+By default the TCP port `42011` is used. If you want to change it you have to change the `EXPOSE 42011` and the `--port=42011` part in `broadlinkgo.Dockerfile`.
 
 ### Limited resources needed
 
 I like to limit my container resources so when you use `docker-compose up -d` with this docker-compose file you will have a tiny container that can only access 25% of one CPU and 64 megabyte RAM. Which is more than enough to run this awesome API and it will still be blazing fast thanks to GoLang.
+
+## Usage
+
+Clone this repository:
+
+    git clone https://github.com/brianpierson2020/broadlinkgo-docker broadlinkgo-docker
+    cd broadlinkgo-docker
+
+### With docker-compose
+Configure the local IP address, port and volume paths in the `docker-compose.yml` file then run:
+
+    docker-compose up -d
+
+### Without docker-compose
+Edit the below `docker run` command to your needs and run:
+
+    mv ./broadlinkgo.Dockerfile ./Dockerfile
+    docker build . -t broadlinkgo
+    docker run -v '/docker_volumes/broadlinkgo:/config' --cpus=0.25 --memory=64M --network=host --restart unless-stopped broadlinkgo
+
 
 ## Disclaimer
 This repository has no affiliation with the official repository [rob121/broadlinkgo](https://github.com/rob121/broadlinkgo).

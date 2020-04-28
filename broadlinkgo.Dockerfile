@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-EXPOSE 42011
+EXPOSE 42011/tcp
 HEALTHCHECK --interval=60s --timeout=10s --retries=3 CMD (curl -sS http://localhost:42011) || exit 1
 
 RUN mkdir /app \
