@@ -21,7 +21,27 @@ By default the TCP port `42011` is used. If you want to change it you have to ch
 
 I like to limit my container resources so when you use `docker-compose up -d` with this docker-compose file you will have a tiny container that can only access 25% of one CPU and 64 megabyte RAM. Which is more than enough to run this awesome API and it will still be blazing fast thanks to GoLang.
 
-## Usage
+## Usage (from Docker Hub)
+
+## Without docker-compose
+
+    docker run -d -v '/docker_volumes/broadlinkgo:/config' --cpus=0.25 --memory=64M --network=host --restart unless-stopped brianpierson2020/broadlinkgo
+
+### With docker-compose
+
+    version: '2.2'
+    services:
+        broadlinkgo:
+            volumes:
+                - '/docker_volumes/broadlinkgo:/config'
+            network_mode: host
+            cpus: 0.25
+            mem_limit: 64M
+            restart: unless-stopped
+            image: brianpierson2020/broadlinkgo
+
+
+## Usage (from build)
 
 Clone this repository:
 
@@ -39,7 +59,6 @@ Edit the below `docker run` command to your needs and run:
     mv ./broadlinkgo.Dockerfile ./Dockerfile
     docker build . -t broadlinkgo
     docker run -v '/docker_volumes/broadlinkgo:/config' --cpus=0.25 --memory=64M --network=host --restart unless-stopped broadlinkgo
-
 
 ## Disclaimer
 This repository has no affiliation with the official repository [rob121/broadlinkgo](https://github.com/rob121/broadlinkgo). I am not responsible for anything that can possibly go wrong because of this software. Please, always back-up your own configuration files before making changes.
