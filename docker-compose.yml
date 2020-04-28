@@ -1,0 +1,19 @@
+version: '2.2'
+services:
+  broadlinkgo:
+    container_name: broadlinkgo
+    cpus: .25
+    build:
+      context: .
+      dockerfile: broadlinkgo.Dockerfile
+    mem_limit: 64M
+    network_mode: host
+    ports:
+      - '127.0.0.1:42011:42011/tcp'
+    restart: unless-stopped
+    volumes:
+      # Use this line during configuration when you need to add, change or remove things in the Web UI
+      - '/docker_volumes/broadlinkgo:/config'
+      # Use below line instead if you set it up and only want to send commands
+      # it prevents accidental remove of device/commands by making the share read-only
+      #- '/docker_volumes/broadlinkgo:/config:ro'
