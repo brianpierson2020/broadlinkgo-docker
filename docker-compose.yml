@@ -6,6 +6,7 @@ services:
     build:
       context: .
       dockerfile: broadlinkgo.Dockerfile
+    image: broadlinkgo
     mem_limit: 64M
     network_mode: host
     restart: unless-stopped
