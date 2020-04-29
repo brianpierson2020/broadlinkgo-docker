@@ -1,6 +1,6 @@
 # Broadlinkgo Docker
 
-A Docker variant of the awesome [rob121/broadlinkgo](https://github.com/rob121/broadlinkgo) project. This tool is a local Broadlink HTTP API written in [GoLang](https://golang.org/) and works better with the Broadlink devices than the software from Broadlink itself. Thank to @rob121.
+A Docker version of the awesome [rob121/broadlinkgo](https://github.com/rob121/broadlinkgo) project. This tool is a local Broadlink HTTP API written in [GoLang](https://golang.org/) and works better with the Broadlink devices than the software from Broadlink itself. Thanks to [rob121](https://github.com/rob121) and [kwkoo](https://github.com/kwkoo).
 
 I'm aware that GoLang is already cross-platform but I made this Docker version because I wanted to be able to incorporate this specific API into my existing management tools. This version is based on the lightweight [Alpine Linux](https://alpinelinux.org/), but since it is a Docker container it should run on any host OS.
 
